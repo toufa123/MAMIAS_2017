@@ -1,19 +1,30 @@
-# This file is a "template" of what your parameters.yml file should look like
-# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
-# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+# This file is auto-generated during the composer install
 parameters:
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
-    # You should uncomment this if you want use pdo_sqlite
-    # database_path: "%kernel.root_dir%/data.db3"
-
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
-
-    # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    database_driver: pdo_pgsql
+    database_host: 91.186.8.40
+    database_port: 5432
+    database_name: MAMIAS_2017
+    database_user: postgres
+    database_password: postgres
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 24523fd2032b8d07e9ca699e1ecd1f0e3d43d22a
+    locale: en
+    secret: 713f8d369ea7ef9084878f150edacd7efff88d2f
+    sonata_admin.title: 'MAMIAS Admin'
+    sonata_admin.logo_title: /bundles/sonataadmin/logo_title.png
+    sonata_news.blog_title: 'MAMIAS News'
+    sonata_news.blog_link: 'http://www.mamias.org/blog'
+    sonata_news.blog_description: 'News about NIS in the Mediterranean'
+    sonata_news.salt: ThisTokenIsNotSoSecretChangeIt
+    sonata_news.comment.emails:
+        - mamias@rac-spa.org
+    sonata_news.comment.email_from: no-reply@rac-spa.org
+    sonata_media.cdn.host: 'http://demo.sonata-project.org/uploads/media'
+    sonata_user.google_authenticator.server: demo.sonata-project.org
+    sonata_page.varnish.command: 'if [ ! -r "/etc/varnish/secret" ]; then echo "VALID ERROR :/"; else varnishadm -S /etc/varnish/secret -T 127.0.0.1:6082 {{ COMMAND }} "{{ EXPRESSION }}"; fi;'
+    sonata.fixtures.product.fake: 0
+    sonata.fixtures.customer.fake: 10
+    sonata.fixtures.page.create_subsite: false

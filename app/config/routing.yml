@@ -1,5 +1,11 @@
-mamiasnis:
-    resource: "@MAMIASNISBundle/Controller/"
+mamias:
+    resource: "@MAMIASNISBundle/Controller/front/"
     type:     annotation
     prefix:   /
 
+_front:
+    resource: routing_front.yml
+
+_admin:
+    resource: routing_admin.yml
+    prefix:   /admin

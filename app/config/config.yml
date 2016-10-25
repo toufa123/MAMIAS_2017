@@ -1,18 +1,44 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: services.yml }
-    - { resource: "@MAMIASNISBundle/Resources/config/services.yml" }
-    
+    #- { resource: assetic.yml }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
-parameters:
-    locale: en
+    # Mopa Bootstrap
+    - { resource: mopa/mopa_bootstrap.yml }
+
+    # Knp Paginator
+    #- { resource: knp/knp_paginator.yml }
+
+    # FriendOfSymfony Bundles
+    #- { resource: fos/fos_comment.yml }
+    #- { resource: fos/fos_rest.yml }
+    - { resource: fos/fos_user.yml }
+    #- { resource: fos/fos_elastica.yml }
+
+    # Sonata Core Bundles
+    - { resource: sonata/sonata_block.yml }
+    - { resource: sonata/sonata_formatter.yml }
+    - { resource: sonata/sonata_cache.yml }
+    - { resource: sonata/sonata_seo.yml }
+    - { resource: sonata/sonata_timeline.yml }
+    - { resource: sonata/sonata_intl.yml }
+    - { resource: sonata/sonata_core.yml }
+
+    # Sonata Feature Bundles
+    - { resource: sonata/sonata_admin.yml }
+    #- { resource: sonata/sonata_comment.yml }
+    #- { resource: sonata/sonata_page.yml }
+    - { resource: sonata/sonata_media.yml }
+    - { resource: sonata/sonata_news.yml }
+    - { resource: sonata/sonata_user.yml }
+    - { resource: sonata/sonata_notification.yml }
+    - { resource: sonata/sonata_classification.yml }
+
+    
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -23,6 +49,7 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
+        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -37,22 +64,33 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+    base_template_class: Sonata\CacheBundle\Twig\TwigTemplate14
+
+    form:
+        resources:
+            - 'SonataFormatterBundle:Form:formatter.html.twig'
+            - 'SonataMediaBundle:Form:media_widgets.html.twig'
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+
+    #exception_controller: 'FOS\RestBundle\Controller\ExceptionController::showAction'
+
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
+        default_connection: default
+
+        connections:
+            default:
+                driver:   "%database_driver%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                host:     "%database_host%"
+                password: "%database_password%"
+                charset:  UTF8
+
+        types:
+            json:     Sonata\Doctrine\Types\JsonType
+            #currency: Sonata\Component\Currency\CurrencyDoctrineType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -66,6 +104,39 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# JMS Serializer Configuration
+jms_serializer:
+    metadata:
+        directories:
+            - { path: %kernel.root_dir%/../vendor/sonata-project/user-bundle/Resources/config/serializer/FOSUserBundle, namespace_prefix: 'FOS\UserBundle' }
+            - { path: %kernel.root_dir%/../vendor/sonata-project/ecommerce/src/BasketBundle/Resources/config/serializer/Component, namespace_prefix: 'Sonata\Component\Basket' }
+            - { path: %kernel.root_dir%/../vendor/sonata-project/datagrid-bundle/Resources/config/serializer, namespace_prefix: 'Sonata\DatagridBundle' }
+
+# Assetic Configuration
+#assetic:
+#    debug:          %kernel.debug%
+#    use_controller: false
+#    filters:
+#        cssrewrite: ~
+#        # closure:
+#        #     jar: %kernel.root_dir%/java/compiler.jar
+#        # yui_css:
+#        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+#
+#        # Comment out those lines if you wish to use the less version of bootstrap
+#        less:
+#            node: /usr/local/bin/node
+#            node_paths: [/usr/local/node/node-v0.10.22/lib/node_modules]
+#            apply_to: "\.less$"
+
+#nelmio_api_doc: ~
+
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }
+    request: { converters:  true }
+
 
 web_profiler_extra:
     routing:

@@ -1,0 +1,4 @@
+services:
+#    mamiasnis.example:
+#        class: MAMIAS\NISBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

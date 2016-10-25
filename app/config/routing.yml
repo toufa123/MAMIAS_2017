@@ -1,0 +1,5 @@
+mamiasnis:
+    resource: "@MAMIASNISBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

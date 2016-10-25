@@ -1,0 +1,118 @@
+{
+    "name": "habitats/mamias_2017",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": "2.8.*",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "~2.0",
+        
+        "jms/security-extra-bundle": "~1.5",
+        "jms/di-extra-bundle": "dev-master",
+        "jms/serializer-bundle": "~0.11",
+       
+        "doctrine/doctrine-migrations-bundle": "~1.0",
+        "doctrine/migrations": "~1.0@dev",
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "doctrine/data-fixtures": "~1.0@dev",
+        
+        "knplabs/gaufrette": "^0.1.6 || ^0.2",
+        "knplabs/knp-menu-bundle": "~2.0",
+        
+        "dflydev/markdown": "~1.0",
+        "willdurand/faker-bundle": "~1.0",
+
+        "mopa/bootstrap-bundle": "dev-master",
+        "twitter/bootstrap": "dev-master",
+        "twbs/bootstrap": "3.3.x-dev",
+
+        "stof/doctrine-extensions-bundle": "~1.1",
+        "stephpy/TimelineBundle": "~2.0@dev",
+        "stephpy/timeline": "~1.0@dev",
+        
+        "sonata-project/datagrid-bundle": "2.x-dev",
+        "sonata-project/easy-extends-bundle": "~2.1",
+        "sonata-project/seo-bundle": "^2.0",
+        "sonata-project/doctrine-extensions": "~1",
+        "sonata-project/intl-bundle": "^2.2.4",
+        "sonata-project/admin-bundle": " ^3.4",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.0",
+        "sonata-project/notification-bundle": "^3.0",
+        "sonata-project/block-bundle": "^3.1.1",
+        "sonata-project/media-bundle": "3.x-dev",
+        "sonata-project/user-bundle": "^3.0",
+        "sonata-project/cache-bundle": "^2.1.7",
+        "sonata-project/core-bundle":"^3.0",
+        "sonata-project/formatter-bundle": "^3.0",
+        "sonata-project/news-bundle": "4.x-dev",
+        "sonata-project/exporter": " ^1.2.2",
+        "sonata-project/timeline-bundle": "3.x-dev",
+        "stephpy/timeline-bundle":"^2.3",
+        "sonata-project/classification-bundle": "^3.0",
+        "sonata-project/comment-bundle": "dev-master",
+        "sonata-project/dashboard-bundle":"dev-master",
+        "michelf/php-markdown":"~1.4",
+        "knplabs/knp-markdown-bundle":"^1.4",
+        
+        "egeloen/google-map-bundle": "~2.1",
+        "widop/http-adapter-bundle": "~1.2",
+        
+        "egeloen/google-map":" ~1.4.0",
+        "shtumi/useful-bundle":"dev-master",
+        "pugx/autocompleter-bundle" :"dev-master",
+        "genemu/form-bundle": "^3.0@dev",
+        
+        "ob/highcharts-bundle":"dev-master",
+        "timhovius/bootstrap-material-design": "dev-master",
+        "cnerta/breadcrumb-bundle": "2.1.*",
+        
+        "elao/web-profiler-extra-bundle" : "~2.3@dev"
+        
+    },
+    "require-dev": {
+        "sensio/generator-bundle": "~3.0",
+        "symfony/phpunit-bridge": "~2.7"
+    },
+    "scripts": {
+        "symfony-scripts": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }
+    }
+}

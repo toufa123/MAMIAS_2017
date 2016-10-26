@@ -1,0 +1,44 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}
+	All Invasive Aliens Species
+{% endblock %}
+
+
+{% block body %}
+
+<div class="page-heading style3 wrapper border-bottom ">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<h1>All invasive species</h1>
+			</div>
+		</div>
+	</div>
+
+</br>
+
+
+ <link href="{{ asset('assets/css/invasespec.css') }}" type="text/css" rel="stylesheet" />
+ <div class="myform">
+ <form >
+     
+  {% for nameSP in nameSP %}
+  		<div class="col-md-4">
+    	  <h7 class="marge"> 
+              <ul>
+                  <li><b>{{ loop.index }}</b> - <i><b><a href="#">{{ nameSP.species_name }}</b></i></a></li>
+              </ul>
+        </h7>
+        </div>
+    {% if loop.index % 4 == 0 %}
+        <br>
+    {% endif %}
+  {% endfor %}
+  </form>
+  </div>
+
+  </br>
+  </br>
+
+
+  {% endblock %}

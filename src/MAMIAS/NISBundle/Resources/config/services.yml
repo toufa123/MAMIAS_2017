@@ -1,4 +1,100 @@
 services:
-#    mamiasnis.example:
-#        class: MAMIAS\NISBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#    nismamias.example:
+#        class: NIS\MAMIASBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+     nismamias.species:
+         class: MAMIAS\NISBundle\Controller\admin\SpeciesAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienSpecies, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "NIS",label: Alien Species,show_mosaic_button: false  }
+     nismamias.Distribution:
+         class: MAMIAS\NISBundle\Controller\admin\DistributionAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienDistribution, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "NIS",label: Distibution }
+         
+     nismamias.Taxonomy:
+         class: MAMIAS\NISBundle\Controller\admin\TaxonomyAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienTaxonomy, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "NIS",label: Taxonomy }
+         calls:
+            - [ setTemplate, [edit, MAMIASNISBundle:CRUD:edit.html.twig]]
+     nismamias.Synonym:
+         class: MAMIAS\NISBundle\Controller\admin\SynonymAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienSynonyms, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "NIS",label: Synonyms }
+     nismamias.Image:
+         class: MAMIAS\NISBundle\Controller\admin\ImageAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienImage, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "NIS",label: Images }
+     nismamias.author:
+         class: MAMIAS\NISBundle\Controller\admin\AuthorAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienAuthor, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Refrences",label: Taxon Author }
+     nismamias.Literature:
+         class: MAMIAS\NISBundle\Controller\admin\LiteratureAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienLiterature, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Refrences",label: Literature }
+     nismamias.firstCitation:
+         class: MAMIAS\NISBundle\Controller\admin\firstcitationAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienMed1stCitation, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Refrences",label: Fisrt Citation }
+     nismamias.Country:
+         class: MAMIAS\NISBundle\Controller\admin\CountryAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienCountry, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Country }
+     nismamias.DonorArea:
+         class: MAMIAS\NISBundle\Controller\admin\DonorAreaAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienDonorArea, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Donor Area }
+            
+     nismamias.EcofunctionalType:
+         class: MAMIAS\NISBundle\Controller\admin\EcofunctionalTypeAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienEcofunctional, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Ecofunctional Type }       
+     
+     nismamias.MSFD:
+         class: MAMIAS\NISBundle\Controller\admin\MSFDAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienMsfd, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: MSFD }      
+     
+     nismamias.origin:
+         class: MAMIAS\NISBundle\Controller\admin\OriginAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienOrigin, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Origin }   
+     
+     nismamias.RegionalSeas:
+         class: MAMIAS\NISBundle\Controller\admin\RegionalSeaTypeAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienRegionalSea, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Regional Sea } 
+            
+     nismamias.SuccessType:
+         class: MAMIAS\NISBundle\Controller\admin\SuccessTypeAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienSuccessType, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Success Type }      
+     nismamias.status:
+         class: MAMIAS\NISBundle\Controller\admin\StatusAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienStatus, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Quality Status }         
+     nismamias.VectorName:
+         class: MAMIAS\NISBundle\Controller\admin\VectorNameAdmin
+         arguments: [~, MAMIAS\NISBundle\Entity\AlienVectorName, SonataAdminBundle:CRUD]
+         tags:
+            - { name: sonata.admin, manager_type: orm, group: "Settings",label: Vector Name }
+
+     
+     

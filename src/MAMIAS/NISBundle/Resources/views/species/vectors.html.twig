@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% for val in value %}
+        - {{ val.vectorName }} {# I'm just guessing the object properties #}
+        <br/>
+    {% endfor %}
+{% endblock %}
+

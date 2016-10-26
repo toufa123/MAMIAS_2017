@@ -1,0 +1,171 @@
+{% extends "base1.html.twig" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+    <STYLE type="text/css">
+        .FixedHeightContainer
+        {
+            float:right;
+            height: 50px;
+            width:250px; 
+            padding:3px; 
+            background:#f00;
+        }
+        .Content
+        {
+            height:270px;
+            overflow:auto;
+            background:#fff;
+        }
+
+
+
+
+    </style>
+
+
+
+    <div class="page-heading style3 wrapper border-bottom ">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <!--<h1>home page</h1>-->
+            </div>
+        </div>
+
+
+        </br>
+
+        {% if value is defined  %}
+            {% if value =='register'  %}
+                <div class="alert alert-success">You have registered successfully.</div>
+            {% endif %}
+            {% if value =='edit'  %}
+                <div class="alert alert-success">Your profile has been successfully updated.</div>
+            {% endif %}
+            {% if value =='forgot'  %}
+                <div class="alert alert-success">An email has been sent. Check your email.</div>
+            {% endif %}
+            {% if value =='login'  %}
+                <div class="alert alert-success">Login succeded.</div>
+            {% endif %}
+        {% endif %}
+
+
+        <link href="{{ asset('assets/css/invasespec_1.css') }}" type="text/css" rel="stylesheet" />
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+        <div class="row">
+            <div class="col-sm-4 main-el">
+                <div class="alt box counter">
+                    <div class="count main-text-color" data-from="0" data-to="{{nb}}" data-speed="10" data-refresh-interval="50">{{nb}}</div>
+                    <div class="unit">
+                        Number of NIS in the database
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 main-el">
+                <div class="alt box counter">
+                    <div class="count main-text-color" data-from="0" data-to="{{nbe}}" data-speed="10" data-refresh-interval="10">{{nbe}}</div>
+                    <div class="unit">
+                        Number of NIS established
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4 main-el">
+                <div class="alt box counter">
+                    <div class="count main-text-color" data-from="0" data-to="{{nbi}}" data-speed="10" data-refresh-interval="10">{{nbi}}</div>
+                    <div class="unit">
+                        Number of Invasive NIS
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        </br>
+
+        <div class="row">
+            <div class="col-md-6"> 
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Number of Taxons introduced</div>
+                    <div class="panel-body">
+                        <script type="text/javascript">
+                            {% if piechart1 is defined %}
+                                {{ chart(piechart1) }}
+                            {% endif %}
+                        </script>
+
+                        <div id="piechart1" style="min-width: 400px; height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6"> 
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Number of Taxons established </div>
+                    <div class="panel-body">
+                        <script type="text/javascript">
+                            {% if piechart2 is defined %}
+                                {{ chart(piechart2) }}
+                            {% endif %}
+                        </script>
+
+                        <div id="piechart2" style="min-width: 400px; height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">  
+                <div class="panel panel-default">
+                    <div class="panel-heading">Origin of NIS</div>
+                    <div class="panel-body">
+                        <script type="text/javascript">
+                            {% if barchart is defined %}
+                                {{ chart(barchart) }}
+                            {% endif %}
+                        </script>
+
+                        <div id="barchart" style="min-width: 400px; height: 400px;"></div>
+                    </div>
+                </div>
+
+            </div>     
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">  
+                <div class="panel panel-default">
+                    <div class="panel-heading"> Mode of introduction of NIS</div>
+                    <div class="panel-body">
+                        <script type="text/javascript">
+                            {% if barchart2 is defined %}
+                                {{ chart(barchart2) }}
+                            {% endif %}
+                        </script>
+
+                        <div id="barchart2" style="min-width: 400px; height: 400px;"></div>
+                    </div>
+                </div>
+
+            </div>     
+
+        </div>   
+
+    </div>
+
+{% endblock %}

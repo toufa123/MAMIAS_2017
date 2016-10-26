@@ -1,0 +1,154 @@
+{% extends "base1.html.twig" %}
+
+{% block title %}
+    Histogram
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-heading style3 wrapper border-bottom ">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h1>Statistics</h1>
+            </div>
+        </div>
+    </div>
+
+    </br>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    {% block javascriptspage %}
+        <script type="text/javascript">
+            /*$('#mamias_statistiquebundle_aliencountry_country').change(function () {
+             if ($(this).val()!==-1){
+             
+             alert('test');
+             //  $("select#mamias_statistiquebundle_aliencountry_regionalSea").find("option#2").attr("selected", true); 
+             }
+             });*/
+        </script>
+
+    {% endblock %}
+<div class="row call only">
+    <form class="call only form" action="{{ path('statistics_histogram') }}" novalidate >
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-item main-el">
+                <h7>Ecofunctional group:</h7>
+                </br>
+                {{ form_widget(form.ecofunctional, { 'attr': {'class': "chzn-select1",'style': "width:200px", 'placeholder': "Ecofunctional group"} }) }}
+            </div>
+            <div class="col-md-3 col-sm-6 col-item main-el">
+                <h7>Establishment/Success:</h7>
+                </br>
+                {{ form_widget(form.successType, { 'attr': {'class': "chzn-select2",'style': "width:200px", 'placeholder': "Establishment/Success"} }) }}
+            </div>
+            <div class="col-md-3 col-sm-6 col-item main-el">
+                <h7>Origin:</h7>
+                </br>
+                {{ form_widget(form.originRegion, { 'attr': {'class': "chzn-select3",'style': "width:200px", 'placeholder': "Origin"} }) }}
+            </div>
+            <div class="col-md-3 col-sm-6 col-item main-el">
+                <h7>Invasive Caracteristics:</h7>
+                </br>
+                {{ form_widget(form.invasive, { 'attr': {'class': "chzn-select4",'style': "width:200px", 'placeholder': "Invasive Caracteristics"} }) }}
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-item main-el">
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-item main-el">
+                <h7>RegionalSea:</h7>
+                </br>
+                {{ form_widget(form.regionalSea, { 'attr': {'class': "chzn-select6",'style': "width:200px", 'placeholder': "regionalSea"} }) }}
+            </div>
+            <div class="col-md-3 col-sm-6 col-item main-el">
+                <h7>MSFD:</h7>
+                </br>
+                {{ form_widget(form.msfd, { 'attr': {'class': "chzn-select7",'style': "width:200px", 'placeholder': "msfd"} }) }}
+            </div>
+            <div class="col-md-3 col-sm-6 col-item main-el">
+
+            </div>
+        </div>
+
+                        
+
+                
+        <div class="row">
+                        <div class="col-md-3 col-sm-6 col-item main-el">
+                            
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-item main-el">
+                            <a class="button sm solid blue" href="{{ path('statistics_histogram') }}"> <div class="over"><input type="button" class="grid-search-reset" value="{{ 'Reset'|trans }}" /></div></a>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-item main-el">
+                            <a class="button sm solid blue"href="{{ path('statistics_histogram') }}" ><div class="over">{{ form_widget(form.submit) }}</div> </a>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-item main-el">
+                            
+                        </div>
+                    </div>
+        
+    </form>
+</div></br>
+<div class="row call only">
+    <script type="text/javascript">
+        {% if barchart is defined %}
+            {{ chart(barchart) }}
+        {% endif %}
+    </script>
+
+    <div id="barchart" style="min-width: 400px; height: 400px;"></div>
+
+</div>
+    <link rel="stylesheet" href="{{ asset('assets/chosen/chosen.css')}}">
+    <script src="{{ asset('assets/chosen/chosen.jquery.js')}}"></script>
+    <script type="text/javascript">
+            $(function () {
+                $(".chzn-select1").chosen({disable_search_threshold: 10, allow_single_deselect: true});
+                ;
+                $(".chzn-select2").chosen({disable_search_threshold: 10, allow_single_deselect: true});
+                ;
+                $(".chzn-select3").chosen({disable_search_threshold: 10, allow_single_deselect: true});
+                ;
+                $(".chzn-select4").chosen({disable_search_threshold: 10, allow_single_deselect: true});
+                ;
+                $(".chzn-select6").chosen({disable_search_threshold: 10, allow_single_deselect: true});
+                ;
+                $(".chzn-select7").chosen({disable_search_threshold: 10, allow_single_deselect: true});
+                ;
+
+            });
+    </script>
+
+    <script>
+
+        $('.chzn-select1').val({{ ecogrp }});
+        $('.chzn-select1').trigger("chosen:updated");
+
+        $('.chzn-select2').val({{ success }});
+        $('.chzn-select2').trigger("chosen:updated");
+
+        $('.chzn-select3').val({{ origin }});
+        $('.chzn-select3').trigger("chosen:updated");
+
+        $('.chzn-select4').val({{ inv }});
+        $('.chzn-select4').trigger("chosen:updated");
+        $('.chzn-select6').val({{ regsea }});
+        $('.chzn-select6').trigger("chosen:updated");
+
+        $('.chzn-select7').val({{ msfd }});
+        $('.chzn-select7').trigger("chosen:updated");
+
+    </script>
+
+
+
+{% endblock %}
